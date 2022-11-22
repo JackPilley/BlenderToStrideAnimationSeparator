@@ -1,8 +1,8 @@
 bl_info = {
         "name":         "Fbx Animation Splitter for Stride3D Engine",
         "category":     "Import-Export",
-        "version":      (0,0,4),
-        "blender":      (2,90,0),
+        "version":      (0,0,5),
+        "blender":      (3,3,0),
         "location":     "File > Import-Export",
         "description":  "Split Animation Export",
         "category":     "Import-Export"
@@ -35,7 +35,7 @@ def main(context):
             #export here
             
             context.object.animation_data.action = bpy.data.actions[i]
-            context.scene.frame_end = bpy.data.actions[i].frame_range[1]
+            context.scene.frame_end = int(bpy.data.actions[i].frame_range[1])
 
             target_file = os.path.join(directory, os.path.splitext(context.blend_data.filepath)[0] + '_' + bpy.data.actions[i].name + '.fbx')
             print(str(bpy.data.actions[i].name))
